@@ -2,6 +2,7 @@ import express , { Request, Response } from "express"
 import connectToDatabase from "./db";
 import userRoutes from "./routes/user.routes";
 import { categoryRoutes } from "./routes/categories.routes";
+import taskRoutes from "./routes/task.routes";
 
 const application = express();
 application.use(express.json());
@@ -14,6 +15,7 @@ application.get("/ping" , ( request : Request , response : Response ) => {
 
 application.use("/users",userRoutes);
 application.use("/categories",categoryRoutes);
+application.use("/tasks", taskRoutes)
 
 application.listen( port , () => {
     console.log("Server up and running")
